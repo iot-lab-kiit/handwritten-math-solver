@@ -5,7 +5,8 @@ A Flask application that uses **OCR + CNN** to recognize handwritten digits and 
 ---
 
 ## 📸 Example
-![alt text](image-1.png)
+<img width="427" height="180" alt="image-1" src="https://github.com/user-attachments/assets/4635a5f7-f495-4ad3-b34b-bf9640dc4735" />
+
 
 ➡️ The app predicts `2+3*4` and computes the result: `= 14`.
 
@@ -24,7 +25,7 @@ A Flask application that uses **OCR + CNN** to recognize handwritten digits and 
 
 ### 1. Clone & install
 ```bash
-git clone https://github.com/<iot-lab-kiit>/handwritten-math-solver.git
+git clone https://github.com/iot-lab-kiit/handwritten-math-solver.git
 cd handwritten-math-solver
 python -m venv venv
 source venv/bin/activate   # or venv\Scripts\activate on Windows
