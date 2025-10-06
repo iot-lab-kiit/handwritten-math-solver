@@ -76,4 +76,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 ---
 
 ## 📄 License
-MIT License — see [LICENSE](LICENSE).
+MIT License — see [LICENSE]([LICENSE](https://github.com/iot-lab-kiit/handwritten-math-solver/blob/main/LICENSE)).
