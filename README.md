@@ -60,7 +60,8 @@ Ways to help:
 - Write more tests
 - Improve docs or CI/CD pipeline
 
-See ([CONTRIBUTING.md) for details.](https://github.com/iot-lab-kiit/handwritten-math-solver/blob/main/contributing.md)
+See [CONTRIBUTING.md](https://github.com/iot-lab-kiit/handwritten-math-solver/blob/main/CONTRIBUTING.md) for details.
+
 
 ---
 
