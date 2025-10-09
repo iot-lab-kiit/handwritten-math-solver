@@ -57,10 +57,18 @@ def solveEquation(equation, variable):
 
 class ConvolutionalNeuralNetwork:
     def __init__(self):
+        self.model = None
+        self.model_loaded = False
         if os.path.exists('model/model_weights.h5') and os.path.exists('model/model.json'):
-            self.load_model()
+            try:
+                self.load_model()
+                self.model_loaded = True
+            except Exception as e:
+                print(f"Error loading model: {str(e)}")
+                self.model_loaded = False
         else:
-            raise FileNotFoundError("Model files not found!")
+            print("Model files not found. App will run in limited mode.")
+            self.model_loaded = False
 
     def load_model(self):
         print('Loading Model...')
@@ -78,6 +86,9 @@ class ConvolutionalNeuralNetwork:
         print("Model loaded successfully!")
 
     def predict(self, operationBytes):
+        if not self.model_loaded or self.model is None:
+            raise RuntimeError("Model is not loaded. Cannot make predictions.")
+        
         Image.open(operationBytes).save('_aux_.png')
         #
         img = cv2.imread('_aux_.png', 0)
@@ -175,9 +186,13 @@ def extract_imgs(img):
 
 try:
     cnn = ConvolutionalNeuralNetwork()
-    model_status = "Model loaded successfully!"
-except Exception as e:
-    model_status = f"Error loading model: {str(e)}"
+    if cnn.model_loaded:
+        model_status = "Model loaded successfully!"
+    else:
+        model_status = "⚠️ Model not found. Please add model files (model.json and model_weights.h5) to /model folder."
+except Exception:
+    cnn = None
+    model_status = "⚠️ Model not found. Please add model files (model.json and model_weights.h5) to /model folder."
 
 @app.route('/')
 def index():
@@ -186,6 +201,12 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
+        # Check if model is loaded
+        if cnn is None or not cnn.model_loaded:
+            return jsonify({
+                'error': '⚠️ Model not found. Please add model files (model.json and model_weights.h5) to /model folder.'
+            }), 503
+        
         if 'file' not in request.files:
             return jsonify({'error': 'No file uploaded'}), 400
         
