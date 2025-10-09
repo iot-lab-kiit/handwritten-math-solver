@@ -23,7 +23,41 @@ A Flask application that uses **OCR + CNN** to recognize handwritten digits and 
 
 ## ⚡ Quick Start
 
-### 1. Clone & install
+### Option 1: Using Docker (Recommended)
+
+#### Prerequisites
+- Docker installed on your system
+
+#### Steps
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/iot-lab-kiit/handwritten-math-solver.git
+   cd handwritten-math-solver
+   ```
+
+2. **Add model files**  
+   Place your trained model files in the `model/` folder:
+   - `model/model.json`
+   - `model/model_weights.h5`
+
+3. **Build the Docker image**
+   ```bash
+   docker build -t handwritten-math-solver .
+   ```
+
+4. **Run the container**
+   ```bash
+   docker run -p 5000:5000 handwritten-math-solver
+   ```
+
+5. **Access the app**  
+   Visit [http://localhost:5000](http://localhost:5000)
+
+---
+
+### Option 2: Local Setup
+
+#### 1. Clone & install
 ```bash
 git clone https://github.com/iot-lab-kiit/handwritten-math-solver.git
 cd handwritten-math-solver
@@ -32,14 +66,12 @@ source venv/bin/activate   # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
-### 2. Add model files
+#### 2. Add model files
 Place your trained model files in the `model/` folder:
 - `model/model.json`
 - `model/model_weights.h5`
 
-
-
-### 3. Run the server
+#### 3. Run the server
 ```bash
 python app.py
 ```
