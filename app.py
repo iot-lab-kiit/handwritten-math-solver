@@ -11,7 +11,8 @@ from tensorflow.keras.utils import to_categorical
 from PIL import Image
 import matplotlib.pyplot as plt
 from flask_cors import CORS
-app = Flask(__name__)
+
+app = Flask(__name__, template_folder='template')
 CORS(app)
 index_by_directory = {
     '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,

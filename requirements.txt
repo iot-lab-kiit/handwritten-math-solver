@@ -1,8 +1,10 @@
 flask
+flask-cors
+tensorflow==2.9.0
 keras==2.9.0
 ipykernel
-opencv-python
-numpy==1.26.4
+opencv-python-headless
+numpy==1.23.5
 pandas
 pillow
 sympy
