@@ -9,3 +9,4 @@ pandas
 pillow
 sympy
 matplotlib
+pytest
