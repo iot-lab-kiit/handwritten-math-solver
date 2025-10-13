@@ -87,6 +87,7 @@ class ConvolutionalNeuralNetwork:
 
     def predict(self, operationBytes):
         if not self.model_loaded or self.model is None:
+            print("Error: Model is not loaded. Cannot make predictions.")
             raise RuntimeError("Model is not loaded. Cannot make predictions.")
         
         Image.open(operationBytes).save('_aux_.png')
